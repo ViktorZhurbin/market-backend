@@ -1,6 +1,6 @@
 const Product = require('../models/product');
 
-exports.getProducts = (req, res, next) => {
+exports.getProducts = (req, res) => {
   Product.find({})
     .then((products) => {
       console.log('PRODUCTS', products);
@@ -9,7 +9,7 @@ exports.getProducts = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.postAddProduct = (req, res, next) => {
+exports.postAddProduct = (req) => {
   const {
     body: { title, price },
   } = req;
@@ -25,24 +25,23 @@ exports.postAddProduct = (req, res, next) => {
     .catch((err) => console.log('Log', err));
 };
 
-exports.postEditProduct = (req, res, next) => {
+exports.postEditProduct = (req) => {
   const {
     body: { title, price, productId },
   } = req;
 
   Product.findById(productId)
     .then((product) => {
-      product.title = title;
-      product.price = price;
+      const updatedProduct = { ...product, title, price };
 
-      return product.save().then((result) => {
+      return updatedProduct.save().then((result) => {
         console.log('UPDATED PRODUCT', result);
       });
     })
     .catch((err) => console.log(err));
 };
 
-exports.postDeleteProduct = (req, res, next) => {
+exports.postDeleteProduct = (req) => {
   const prodId = req.body.productId;
 
   Product.deleteOne({ _id: prodId })
