@@ -6,7 +6,14 @@
   "scripts": {
     "start": "nodemon app.js --delay 1500ms",
     "dev": "npm start",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "lint:write": "lint -c .eslintrc --fix",
+    "prettier": "prettier src/**/*.{js,jsx,json} --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "keywords": [],
   "author": "",
@@ -14,8 +21,13 @@
   "devDependencies": {
     "eslint": "^7.11.0",
     "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-import": "^2.22.1",
-    "nodemon": "^2.0.4"
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.2"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
