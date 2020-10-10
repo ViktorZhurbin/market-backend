@@ -2,10 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "engines": { "node": ">= 12.0.0"},
   "scripts": {
-    "start": "nodemon app.js --delay 1500ms",
+    "start": "nodemon src/index.js --delay 1500ms",
     "dev": "npm start",
     "lint": "eslint src",
     "lint:write": "lint -c .eslintrc --fix",
