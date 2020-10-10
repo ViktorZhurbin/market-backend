@@ -8,8 +8,8 @@
     "start": "nodemon src/index.js --delay 1500ms",
     "dev": "npm start",
     "lint": "eslint src",
-    "lint:write": "lint -c .eslintrc --fix",
-    "prettier": "prettier src/**/*.{js,jsx,json} --write"
+    "lint:write": "eslint -c .eslintrc --fix",
+    "prettier": "prettier src/**/*.{js,json} --write"
   },
   "husky": {
     "hooks": {
