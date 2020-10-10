@@ -11,6 +11,7 @@ const MONGODB_URI =
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use('/admin', adminRoutes);
 

@@ -1,7 +1,15 @@
 const Product = require('../models/product');
 
+exports.getProducts = (req, res, next) => {
+  Product.find({})
+    .then((products) => {
+      console.log('PRODUCTS', products);
+      res.send(products);
+    })
+    .catch((err) => console.log(err));
+};
+
 exports.postAddProduct = (req, res, next) => {
-  console.log('REQ', req.body);
   const {
     body: { title, price },
   } = req;
@@ -30,15 +38,6 @@ exports.postEditProduct = (req, res, next) => {
       return product.save().then((result) => {
         console.log('UPDATED PRODUCT', result);
       });
-    })
-    .catch((err) => console.log(err));
-};
-
-exports.getProducts = (req, res, next) => {
-  Product.find({})
-    .then((products) => {
-      console.log('PRODUCTS', products);
-      res.send(products);
     })
     .catch((err) => console.log(err));
 };
